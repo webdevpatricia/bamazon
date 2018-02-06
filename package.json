@@ -1,0 +1,19 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Bamazon\r This project is a CLI application that places orders for the Bamazon web store.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdevpatricia/bamazon.git"
+  },
+  "author": "Pat Carlson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webdevpatricia/bamazon/issues"
+  },
+  "homepage": "https://github.com/webdevpatricia/bamazon#readme"
+}
