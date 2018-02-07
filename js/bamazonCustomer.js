@@ -53,6 +53,7 @@ inquirer
 			getCurrentStock(inquirerResponse.item_id, inquirerResponse.quantity);
 		} else {
 			console.log("\nThat's okay, come again when you are more sure.\n");
+			connection.end();
 		};
 	});
 };
@@ -62,11 +63,12 @@ function getCurrentStock(item, quantity) {
 	var query = connection.query("SELECT * FROM products WHERE ?",
 	    [{item_id:item}],
 	    function(err, res) {
+	    	console.log("Current inventory for product: " + res[0].product_name + " is " + res[0].stock_quantity + "\n");
 	    	var newQuantity = res[0].stock_quantity - quantity;
 	    	var balance = res[0].price * quantity;
 	    	if (newQuantity >= 0) {
 	    		updateStockQuantity(newQuantity, item);
-	    		console.log("\nYour order has been placed. Your balance is $" + balance +".\n\n Thank you for ordering with Bamazon!\n\n");
+	    		console.log("\nYour order has been placed. Your balance is $" + balance +".\n\nThank you for ordering with Bamazon!\n\nRemaining inventory for product " + res[0].product_name + " is " + newQuantity + "\n");
 	    	} else {
 	    		console.log("\nSorry, we do not have enough stock for your order.\n")
 	    	}
